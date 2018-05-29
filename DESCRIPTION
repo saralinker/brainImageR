@@ -1,0 +1,32 @@
+Package: brainImageR
+Type: Package
+Title: A Framework for visualizing gene set enrichment throughout
+    neurodevelopment
+Version: 0.99.0
+Authors@R: c(person("Slinker", role = c("aut","cre"), email = "slinker@salk.edu"))
+Author: Sara Linker [aut, cre]
+Maintainer: Sara B Linker <slinker@salk.edu>
+Description: BrainImageR is a package that provides the user with information of where in the human brain their gene set corresponds to. This is provided both as a continuous variable and as a easily-interpretable image. BrainImageR has additional functionality of identifying approximately when in developmental time that a gene expression dataset corresponds to. Both the spatial gene set enrichment and the developmental time point prediction are assessed in comparison to the Allen Brain Atlas reference data. 
+License: CC BY-SA 4.0
+LazyData: TRUE
+biocViews: Software, Transcription, GeneSetEnrichment, GeneExpression, GenePrediction
+VignetteBuilder: knitr
+Depends: R (>= 3.5)
+Imports:
+    BiocGenerics,
+    ExperimentHub,
+    ggplot2,
+    grid,
+    gridExtra,
+    methods,
+    randomForest,
+    RColorBrewer,
+    stats
+Suggets:
+  BiocStyle,
+  utils
+RoxygenNote: 6.0.1
+Suggests: knitr,
+    rmarkdown
+URL: https://github.com/saralinker/brainImageR
+BugReports: https://github.com/saralinker/brainImageR/issues
