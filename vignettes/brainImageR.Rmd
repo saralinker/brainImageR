@@ -107,14 +107,15 @@ that go into `SpatialEnrichment`.
 - `refset`:  The user will pick whether `genes` is compared to the
 developing human or the adult human by assigning the `refset` to
 "developing" or "adult". 
-- `reps` : The final significance of enrichment is determined by a
-bootstrap procedure. Increasing the number of iterations or "reps"
+- `reps` : The final significance estimates are determined by a
+bootstrapping procedure. Increasing the number of iterations or "reps"
 will increase the sensitivity of this analysis. For the initial exploratory
-analyses it is recommended to set this value low (ex: 2). This will give
-a representative plot of enrichments that one can use to assess different
-conditions. Then for the final analysis it is suggested that `reps` be
-increased to a number that can successfully discern tests that fail
-Bonferroni correction (developing = 6540 reps, adult = 3680 rep). 
+analysis it is recommended to set this value low (ex: 20). This will allow
+you to assess different conditions and gene sets. 
+We suggest that for the final analysis that `reps` be
+increased to a number that can successfully discern comparisons that are
+significant after Bonferroni correction 
+(developing = 6540 reps, adult = 3680 rep). 
 
 
 ```{r, message=FALSE, warning=FALSE}
@@ -135,7 +136,9 @@ user-defined background correction.
 
 The second step in SGSE is to calculate significance of the observed
 fold-change compared to random chance within the **microdissected tissue**
-with `boot`.  `boot` only requires the output of `SpatialEnrichment` to run.
+with `boot` using a one-tailed test depending on whether 
+the value represents an enrichment or a depletion.  
+`boot` only requires the output of `SpatialEnrichment` to run.
 
 ```{r}
 boot <- Boot(composite)

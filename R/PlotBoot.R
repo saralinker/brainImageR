@@ -3,8 +3,8 @@
 #'  \code{PlotBoot} Plot the significance results returned from Boot
 #'
 #' @param boot results from the Boot function
-#' @param topcut upper cutoff for plotting gene names
-#' @param botcut bottom cutoff for plotting gene names
+#' @param topcut upper cutoff (fold-change) for plotting region names
+#' @param botcut bottom cutoff (fold-change) for plotting region names
 #' @return Spatial enrichment plot
 #' @examples
 #' #brainImageR:::loadworkspace()
@@ -31,20 +31,20 @@ PlotBoot <- function(boot, topcut = 2, botcut = 2){
                                             alpha = 0.3))+
     ggplot2::scale_colour_manual(values = c("grey","blue"))+
     ggplot2::theme_bw(base_size = 12)+
-    #ggrepel::geom_text_repel(
-    #data = subset(boot, abs(FC) > topcut),
-    #ggplot2::aes_string(label = "abrev"),
-    #size = 4,
-    #box.padding = 0.1,
-    #point.padding = 0.4
-    #)+
     # ggrepel::geom_text_repel(
-    #  data = subset(boot, abs(FC) < botcut),
+    # data = subset(boot, abs(FC) > topcut),
     # ggplot2::aes_string(label = "abrev"),
-    #  size = 4,
-    #  box.padding = 0.1,
-    #  point.padding = 0.3
-    #)+
+    # size = 4,
+    # box.padding = 0.1,
+    # point.padding = 0.4
+    # )+
+    # ggrepel::geom_text_repel(
+    # data = subset(boot, abs(FC) < botcut),
+    # ggplot2::aes_string(label = "abrev"),
+    # size = 4,
+    # box.padding = 0.1,
+    # point.padding = 0.3
+    # )+
     ggplot2::xlab("gene count, random")+
     ggplot2::ylab("gene count, query")
 }
