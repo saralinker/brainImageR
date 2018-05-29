@@ -156,7 +156,7 @@ predict_time <- function(dat = NULL, genelist = NULL, minage = 8,
     #}
     dat.scale <- matrix(data=0,nrow=nrow(dat),ncol=ncol(dat))
     dat <- round(dat, digits = 0)
-    for(i in range(1,ncol(dat))){
+    for(i in brainrange(1,ncol(dat))){
         dat.scale[,i] <- scale(dat[,i])[,1]
     }
     dimnames(dat.scale) <- dimnames(dat)

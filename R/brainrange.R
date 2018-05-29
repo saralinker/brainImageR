@@ -1,4 +1,4 @@
-#' @title range
+#' @title brainrange
 #'
 #' @description
 #' replaces seq to pass bioccheck
@@ -10,10 +10,12 @@
 #' @return vector of numbers
 #'
 #' @examples
-#' range(1,10,0.5)
+#' brainrange(1,10,0.5)
+#'
+#' @export
 
 
-range <- function(first = 0, last = 1, by = 1) {
+brainrange <- function(first = 0, last = 1, by = 1) {
     i <- first - by
     final <- vector()
     while(i < last){

@@ -59,7 +59,7 @@ SpatialEnrichment <- function(genes,
     #                                      samplesize = surviving,
     #                                      refset = refset))
 
-    random.matrix <- as.data.frame(lapply(X=range(1,reps),
+    random.matrix <- as.data.frame(lapply(X=brainrange(1,reps),
                                             FUN=RandomTissueSummary,
                                             genes= background,
                                             samplesize = surviving,

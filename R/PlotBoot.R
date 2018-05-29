@@ -1,6 +1,6 @@
 #' Plot the results from Boot
 #'
-#'  \code{PlotBoot} Plot the significance results returned from Boot
+#'  Plot the significance results returned from Boot
 #'
 #' @param boot results from the Boot function
 #' @param topcut upper cutoff (fold-change) for plotting region names

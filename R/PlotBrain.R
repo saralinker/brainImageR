@@ -42,11 +42,11 @@ PlotBrain <- function(composite, legend = TRUE){
 
     normalized.color <- map
 
-    for(i in range(1, length(cutNormal_b1.low))){
+    for(i in brainrange(1, length(cutNormal_b1.low))){
         placement <- map >= cutNormal_b1.low[i] & map <= cutNormal_b1.hi[i]
         normalized.color[placement] <- blueGradient[i]
     }
-    for(i in range(1, length(cutNormal_a1.low))){
+    for(i in brainrange(1, length(cutNormal_a1.low))){
         placement <- map >= cutNormal_a1.low[i] & map <= cutNormal_a1.hi[i]
         normalized.color[placement] <- redGradient[i]
     }
@@ -86,7 +86,7 @@ PlotBrain <- function(composite, legend = TRUE){
         x <- 0.8
         y <- 0.6
         y1 <- y
-        shift <- 0.04
+        shift <- 0.03
 
         for (i in all_colors){
             grid::grid.rect(x = x,
@@ -104,7 +104,7 @@ PlotBrain <- function(composite, legend = TRUE){
                             x = x,
                             y = y1,
                             gp = grid::gpar(fontsize = 9),
-                            hjust = -0.35)
+                            hjust = -0.65)
             y1 <- y1 + shift
             }
         }else if(legend == TRUE & composite@refset == "adult"){

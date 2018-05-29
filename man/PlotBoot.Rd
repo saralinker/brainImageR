@@ -9,15 +9,15 @@ PlotBoot(boot, topcut = 2, botcut = 2)
 \arguments{
 \item{boot}{results from the Boot function}
 
-\item{topcut}{upper cutoff for plotting gene names}
+\item{topcut}{upper cutoff (fold-change) for plotting region names}
 
-\item{botcut}{bottom cutoff for plotting gene names}
+\item{botcut}{bottom cutoff (fold-change) for plotting region names}
 }
 \value{
 Spatial enrichment plot
 }
 \description{
-\code{PlotBoot} Plot the significance results returned from Boot
+Plot the significance results returned from Boot
 }
 \examples{
 #brainImageR:::loadworkspace()

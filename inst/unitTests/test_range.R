@@ -1,7 +1,7 @@
 #' @title test_range
 #'
 #' @description
-#' tests range function
+#' tests brainrange function
 #'
 #'
 #' @param first starting value number
@@ -14,7 +14,7 @@
 
 
 test_range <- function(first = 0, last = 10, by = 1) {
-  a <- range(first, last, by)
+  a <- brainrange(first, last, by)
   passed <- FALSE
   if(first > last){
     if (length(a) == 0){
