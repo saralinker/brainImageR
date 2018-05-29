@@ -115,3 +115,4 @@ Happy predicting!
 brainImageR was written by Sara B. Linker in R. The image sections were coded by Jon Hsu, Adela Pfaff, Lydia Ko, and Sarah Voter.
 ## License
 brainImageR is released under the Creative Commons CC BY-SA 4.0 license.
+# brainImageR
