@@ -62,7 +62,7 @@ SpatialEnrichment <- function(genes,
     template <- c(brainrange(1,length((names(tissueExp1)))))
     names(template) <- (names(tissueExp1))
     random.matrix <- as.data.frame(vapply(X=brainrange(1,reps),
-                                          FUN.VALUE = template,
+                                            FUN.VALUE = template,
                                             FUN=RandomTissueSummary,
                                             genes= background,
                                             samplesize = surviving,
@@ -72,23 +72,23 @@ SpatialEnrichment <- function(genes,
     tissueExp2 <-  tissueExp
     tissueExp1b <- vector()
     for(i in unique(names(tissueExp1))){
-      tissueExp1b[i] <- mean(tissueExp1[names(tissueExp1) == i])
+        tissueExp1b[i] <- mean(tissueExp1[names(tissueExp1) == i])
     }
     tissueExp1 <- tissueExp1b
     tissueExp2b <- vector()
     for(i in unique(names(tissueExp1))){
-      tissueExp2b[i] <- mean(tissueExp2[names(tissueExp1) == i])
+        tissueExp2b[i] <- mean(tissueExp2[names(tissueExp1) == i])
     }
     tissueExp2 <- tissueExp2b
 
     rm2 <- matrix(data = NA,
-                  nrow = length(unique(names(tissueExp1))),
-                  ncol = ncol(random.matrix),
-                  dimnames = list(unique(names(tissueExp1)),
-                                  colnames(random.matrix))
+                    nrow = length(unique(names(tissueExp1))),
+                    ncol = ncol(random.matrix),
+                    dimnames = list(unique(names(tissueExp1)),
+                    colnames(random.matrix))
     )
     for(i in unique(names(tissueExp1))){
-      rm2[i,] <- apply(random.matrix[names(tissueExp1) == i,], 2, mean)
+        rm2[i,] <- apply(random.matrix[names(tissueExp1) == i,], 2, mean)
     }
     random.matrix <- data.frame(rm2)
     comp <- methods::new(Class="Comp",
