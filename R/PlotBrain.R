@@ -86,7 +86,7 @@ PlotBrain <- function(composite, legend = TRUE){
         x <- 0.8
         y <- 0.6
         y1 <- y
-        shift <- 0.03
+        shift <- 0.035
 
         for (i in all_colors){
             grid::grid.rect(x = x,
@@ -104,7 +104,7 @@ PlotBrain <- function(composite, legend = TRUE){
                             x = x,
                             y = y1,
                             gp = grid::gpar(fontsize = 9),
-                            hjust = -0.65)
+                            hjust = -1.55)
             y1 <- y1 + shift
             }
         }else if(legend == TRUE & composite@refset == "adult"){

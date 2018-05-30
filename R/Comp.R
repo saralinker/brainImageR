@@ -15,7 +15,7 @@
 #' )
 Comp <- methods::setClass(Class="Comp",
                             methods::representation(tissueExp1 = "numeric",
-                            tissueExp2 = "table",
+                            tissueExp2 = "numeric",
                             composite = "matrix",
                             random.matrix = "data.frame",
                             refset = "character"))

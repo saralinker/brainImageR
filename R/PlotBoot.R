@@ -21,14 +21,14 @@
 #'@export
 
 PlotBoot <- function(boot, topcut = 2, botcut = 2){
-    group <- boot$padj < 0.05
+    significant <- boot$padj < 0.05
     ggplot2::ggplot(boot, ggplot2::aes_string("count.random", "count.sample"))+
     ggplot2::geom_point(alpha = 0.5)+
     ggplot2::geom_point(data = boot,
                         ggplot2::aes_string("count.random",
                                             "count.sample",
-                                            colour = "group",
-                                            alpha = 0.3))+
+                                            colour = "significant"
+                                            ),alpha = 0.3)+
     ggplot2::scale_colour_manual(values = c("grey","blue"))+
     ggplot2::theme_bw(base_size = 12)+
     # ggrepel::geom_text_repel(
