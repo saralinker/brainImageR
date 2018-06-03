@@ -55,8 +55,8 @@ CreateBrain <- function(composite, boot, slice, pcut = 0.05){
     Files <- Dataset[[slice]]
     dim <- as.vector(unlist(DIM[slice]))
 
-    subboot <- c(boot[boot$pvalue < 0.05 & is.finite(boot$FC), "FC"])
-    names(subboot) <- rownames(boot[boot$pvalue < 0.05 & is.finite(boot$FC), ])
+    subboot <- c(boot[boot$pvalue < pcut & is.finite(boot$FC), "FC"])
+    names(subboot) <- rownames(boot[boot$pvalue < pcut & is.finite(boot$FC), ])
 
     composite1 <- BrainMap(dim = dim,
                             tissueExp = subboot,

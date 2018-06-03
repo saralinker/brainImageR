@@ -22,6 +22,11 @@ SpatialEnrichment <- function(genes,
                                 reps = 100,
                                 refset = "developing"){
     rowmeta <- .cache[["EH1449"]]
+    if(is.null(rowmeta)){
+        warning(paste(c("workspace not loaded: ",
+                        "Run brainImageR:::loadworkspace()",
+                        " with Bioconductor >= v3.8 installed")))
+    }
     stopifnot(exprs = !is.null(rowmeta))
 
     refset <- tolower(refset)
