@@ -8,7 +8,7 @@
 #' @return p-value of the significance of tissueExp1 given the random.matrix
 #'
 #' @examples
-#' ##Internal to brainImageR, called within Boot
+#' ##Internal to brainImageR, called within testEnrich
 #' #brainImageR:::loadworkspace()
 #' ##First put together a gene list, or load in the default vth dataset
 #' data(vth)

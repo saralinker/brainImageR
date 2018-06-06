@@ -7,6 +7,7 @@
 #'
 #' @examples
 #' comp <- methods::new(Class="Comp",
+#' genes = c("a","b"),
 #' tissueExp1 = c(10,12),
 #' tissueExp2 =  c(10,13),
 #' composite = matrix(0,nrow=10,ncol=10),
@@ -14,7 +15,9 @@
 #' refset = "developing"
 #' )
 Comp <- methods::setClass(Class="Comp",
-                            methods::representation(tissueExp1 = "numeric",
+                            methods::representation(
+                            genes = "character",
+                            tissueExp1 = "numeric",
                             tissueExp2 = "numeric",
                             composite = "matrix",
                             random.matrix = "data.frame",

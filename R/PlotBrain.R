@@ -16,7 +16,7 @@
 #' ##Calculate the spatial enrichment.
 #' #composite <- SpatialEnrichment(vth, reps = 20, refset = "developing")
 #' ##Calculate the significance of the gene set enrichment
-#' #boot <- Boot(composite)
+#' #boot <- testEnrich(composite)
 #' ##Color the brain section of interest
 #' #composite <- CreateBrain(composite, boot, slice = 5, pcut = 0.05)
 #' ##Plot the brain

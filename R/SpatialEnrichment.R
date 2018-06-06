@@ -97,6 +97,7 @@ SpatialEnrichment <- function(genes,
     }
     random.matrix <- data.frame(rm2)
     comp <- methods::new(Class="Comp",
+                            genes = genes,
                             tissueExp1 = tissueExp1,
                             tissueExp2 =  tissueExp2,
                             composite = matrix(NA,1,1),

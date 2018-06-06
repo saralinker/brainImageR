@@ -107,8 +107,9 @@ that go into `SpatialEnrichment`.
 - `refset`:  The user will pick whether `genes` is compared to the
 developing human or the adult human by assigning the `refset` to
 "developing" or "adult". 
-- `reps` : The final significance estimates are determined by a
-bootstrapping procedure. Increasing the number of iterations or "reps"
+- `reps` : The final significance estimates are determined by 
+eirther a fisher's exact test or by bootstrapping the raw data.
+If you choose to bootstrap, increasing the number of iterations or "reps"
 will increase the sensitivity of this analysis. For the initial exploratory
 analysis it is recommended to set this value low (ex: 20). This will allow
 you to assess different conditions and gene sets. 
@@ -136,34 +137,36 @@ user-defined background correction.
 
 The second step in SGSE is to calculate significance of the observed
 fold-change compared to random chance within the **microdissected tissue**
-with `boot` using a one-tailed test depending on whether 
-the value represents an enrichment or a depletion.  
-`boot` only requires the output of `SpatialEnrichment` to run.
+with `testEnrich`.  
+`testEnrich` only requires the output of `SpatialEnrichment` to run.
+If using method = "fisher" a standard fisher's exact test is called.
+If using method = "bootstrap" the p-value will be estimated from 
+the raw data.
 
 ```{r}
-boot <- Boot(composite)
+res <- testEnrich(composite, method = "fisher")
 ```
 
 It is good practice to save your data at this point.
 
 ```{r, eval = FALSE}
-save(list = c("composite", "boot"), file = "/mydir/myfile.rda")
+save(list = c("composite", "res"), file = "/mydir/myfile.rda")
 ```
 
-The table produced from `Boot` reports the enrichment score for all
-tested **microdissected tissue** as well as the bootstrapped raw and
+The table produced from `testEnrich` reports the enrichment score for all
+tested **microdissected tissue** as well as the raw and
 adjusted p-values. These values can be used to identify the exact
 **microdissected tissues** that are over- or under-represented by the
 gene list. 
 
-Output from `Boot`:
+Output from `testEnrich`:
 
 - count.sample: overlap of query gene list and 
 **microdissected tissue** gene list
 - count.random: average overlap of random gene list and 
 **microdissected tissue** gene list
 - FC: fold-change between sample and random
-- p-value: bootstrapped p-value
+- p-value: raw p-value
 - p-adj: FDR corrected p-value
 - abrev: Abreviation of the tissue name provided by Allen Brain Atlas
 reference. This abreviation can be used as input to the Allen Brain Atlas
@@ -175,14 +178,14 @@ specific tissue.
 
 
 ```{r}
-boot <- boot[order(boot$FC, decreasing=TRUE),]
-head(boot)
+res <- res[order(res$FC, decreasing=TRUE),]
+head(res)
 ```
 
-The results from `Boot` can be easily plotted with `PlotBoot`
+The results from `testEnrich` can be easily plotted with `PlotEnrich`
 
 ```{r, fig.width = 6, fig.height = 5}
-PlotBoot(boot, topcut = 6, botcut = 0.1)
+PlotEnrich(res, topcut = 6, botcut = 0.1)
 ```
 
 
@@ -215,7 +218,7 @@ identify what GO terms are enriched given these overlapped genes.
 
 Next we would like to see if neighboring brain areas share SGSE estimates.
 To do this we will use `CreateBrain` to merge all of the 
-**microdissected tissues** returned from `Boot` so that each 
+**microdissected tissues** returned from `testEnrich` so that each 
 **general brain area** present within the Allen Brain Atlas reference map
 is supported by the respective set of underlying tissues. 
 
@@ -225,7 +228,8 @@ the Allen Brain Atlas transcription datasets do not have a 1:1 relationship.
 Therefore some areas are not supported by transcriptional information in the 
 reference map while other areas are supported by more than one tissue.
 
-`CreateBrain` takes the results from `SpatialEnrichment` and `Boot` as input. 
+`CreateBrain` takes the results from `SpatialEnrichment`
+and `testEnrich` as input. 
 There are two additional arguments to consider. 
 
 `CreateBrain` arguments:
@@ -246,7 +250,7 @@ Slices 6 and 7 both have relevant information for LHAa in the thalamus (THM).
 Let's use slice 6 for downstream analysis.
 
 ```{r, message=FALSE, warning=FALSE}
-composite <- CreateBrain(composite, boot, slice = 5, pcut = 0.05)
+composite <- CreateBrain(composite, res, slice = 5, pcut = 0.05)
 ```
 
 Once the **microdissected tissues** have been merged into the corresponding

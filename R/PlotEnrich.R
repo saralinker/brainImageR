@@ -1,8 +1,8 @@
-#' Plot the results from Boot
+#' PlotEnrich
 #'
-#'  Plot the significance results returned from Boot
+#'  Plot the significance results returned from testEnrich
 #'
-#' @param boot results from the Boot function
+#' @param boot results from the testEnrich function
 #' @param topcut upper cutoff (fold-change) for plotting region names
 #' @param botcut bottom cutoff (fold-change) for plotting region names
 #' @return Spatial enrichment plot
@@ -15,12 +15,12 @@
 #' #tissueExp1 <- composite@tissueExp1
 #' #random.matrix <- composite@random.matrix
 #' ##Calculate the significance estimates
-#' #boot <- Boot(composite)
-#' #PlotBoot(boot, topcut = 6, botcut = 0.1)
+#' #boot <- testEnrich(composite)
+#' #PlotEnrich(boot, topcut = 6, botcut = 0.1)
 #'
 #'@export
 
-PlotBoot <- function(boot, topcut = 2, botcut = 2){
+PlotEnrich <- function(boot, topcut = 2, botcut = 2){
     significant <- boot$padj < 0.05
     ggplot2::ggplot(boot, ggplot2::aes_string("count.random", "count.sample"))+
     ggplot2::geom_point(alpha = 0.5)+

@@ -3,7 +3,7 @@
 #'  \code{CreateBrain} convert spatial enrichment into anatomical coordinates.
 #'
 #' @param composite "Comp" object returned from SpatialEnrichment
-#' @param boot significance estimates returned from Boot
+#' @param boot significance estimates returned from testEnrich
 #' @param slice brain section
 #' @param pcut padj filter.
 #' @return "Comp" object
@@ -17,7 +17,7 @@
 #' #tissueExp1 <- composite@tissueExp1
 #' #random.matrix <- composite@random.matrix
 #' ##Calculate the significance estimates
-#' #boot <- Boot(composite)
+#' #boot <- testEnrich(composite)
 #' ##Color the brain section of interest with enrichment
 #' #composite <- CreateBrain(composite, boot, slice = 6, pcut = 0.05)
 #' ##Plot the brain
@@ -73,6 +73,7 @@ CreateBrain <- function(composite, boot, slice, pcut = 0.05){
     Outlinefill <- n_max + n_SD
     normalized[outline[[slice]] < 1] <- Outlinefill
     comp <- methods::new(Class="Comp",
+                        genes = composite@genes,
                         tissueExp1 = tissueExp1,
                         tissueExp2 =  tissueExp2,
                         composite = normalized,

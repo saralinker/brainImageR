@@ -5,7 +5,7 @@
 \title{Calculate the presence of your gene set within each brain region}
 \usage{
 SpatialEnrichment(genes, background = NULL, reps = 100,
-    refset = "developing")
+  refset = "developing")
 }
 \arguments{
 \item{genes}{query gene set}

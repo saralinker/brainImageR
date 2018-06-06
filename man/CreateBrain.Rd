@@ -9,7 +9,7 @@ CreateBrain(composite, boot, slice, pcut = 0.05)
 \arguments{
 \item{composite}{"Comp" object returned from SpatialEnrichment}
 
-\item{boot}{significance estimates returned from Boot}
+\item{boot}{significance estimates returned from testEnrich}
 
 \item{slice}{brain section}
 
@@ -30,7 +30,7 @@ data(vth)
 #tissueExp1 <- composite@tissueExp1
 #random.matrix <- composite@random.matrix
 ##Calculate the significance estimates
-#boot <- Boot(composite)
+#boot <- testEnrich(composite)
 ##Color the brain section of interest with enrichment
 #composite <- CreateBrain(composite, boot, slice = 6, pcut = 0.05)
 ##Plot the brain

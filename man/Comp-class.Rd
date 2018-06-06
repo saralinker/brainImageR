@@ -10,6 +10,7 @@ Set class Comp
 }
 \examples{
 comp <- methods::new(Class="Comp",
+genes = c("a","b"),
 tissueExp1 = c(10,12),
 tissueExp2 =  c(10,13),
 composite = matrix(0,nrow=10,ncol=10),
