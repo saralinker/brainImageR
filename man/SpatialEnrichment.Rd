@@ -4,15 +4,15 @@
 \alias{SpatialEnrichment}
 \title{Calculate the presence of your gene set within each brain region}
 \usage{
-SpatialEnrichment(genes, background = NULL, reps = 100,
-  refset = "developing")
+SpatialEnrichment(genes, background = NULL, reps = 10,
+    refset = "developing")
 }
 \arguments{
 \item{genes}{query gene set}
 
 \item{background}{background gene list, default = NULL (uses all ABA genes)}
 
-\item{reps}{replicates for bootstrap, default = 100}
+\item{reps}{replicates for bootstrap, default = 10}
 
 \item{refset}{reference brain map. developing (default) or adult}
 }

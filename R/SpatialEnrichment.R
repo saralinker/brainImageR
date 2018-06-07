@@ -4,7 +4,7 @@
 #'
 #' @param genes query gene set
 #' @param background background gene list, default = NULL (uses all ABA genes)
-#' @param reps replicates for bootstrap, default = 100
+#' @param reps replicates for bootstrap, default = 10
 #' @param refset  reference brain map. developing (default) or adult
 #' @return "Comp" object
 #'
@@ -19,7 +19,7 @@
 
 SpatialEnrichment <- function(genes,
                                 background = NULL,
-                                reps = 100,
+                                reps = 10,
                                 refset = "developing"){
     rowmeta <- .cache[["EH1449"]]
     if(is.null(rowmeta)){
