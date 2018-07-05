@@ -18,7 +18,9 @@
 #'
 #'@export
 
-RandomTissueSummary <- function(i, genes, samplesize, refset = "developing"){
+RandomTissueSummary <- function(i, genes, samplesize,
+                                refset = c("developing", "adult")){
+    refset <- match.arg(refset)
     genes.1 <-  sample(x=genes,size=samplesize ,replace=FALSE)
     tissueExp2 <- TissueSummary(genes.1,refset = refset)
     return(tissueExp2)

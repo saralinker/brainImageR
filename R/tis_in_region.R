@@ -28,7 +28,7 @@ tis_in_region <- function(composite, tissue_abrev){
         conversion <- .cache[["EH1442"]]
         slices <- .cache[["EH1444"]]
     }else{
-        stop(paste(c("Please choose refset = developing or adult.")))
+        stop("Please choose refset = developing or adult.")
     }
 
     panel <- conversion[conversion$acronym == tissue_abrev,-c(1)]

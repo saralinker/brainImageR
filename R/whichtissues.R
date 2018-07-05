@@ -13,14 +13,14 @@
 #' @export whichtissues
 
 
-whichtissues <- function(g, refset = "developing"){
-    refset <- tolower(refset)
+whichtissues <- function(g, refset = c("developing", "adult")){
+    refset <- tolower(match.arg(refset))
     if (refset == "developing"){
         abatissues <- .cache[["EH1445"]]
     }else if (refset == "adult"){
         abatissues <- .cache[["EH1446"]]
     }else{
-        stop(paste(c("Please choose refset = developing or adult.")))
+        stop("Please choose refset = developing or adult.")
     }
     if (length(g) == 1){
         a2 <- colSums(abatissues[g,])

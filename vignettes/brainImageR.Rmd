@@ -185,7 +185,7 @@ head(res)
 The results from `testEnrich` can be easily plotted with `PlotEnrich`
 
 ```{r, fig.width = 6, fig.height = 5}
-PlotEnrich(res, topcut = 6, botcut = 0.1)
+PlotEnrich(res)
 ```
 
 

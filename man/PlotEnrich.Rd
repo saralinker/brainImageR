@@ -4,20 +4,21 @@
 \alias{PlotEnrich}
 \title{PlotEnrich}
 \usage{
-PlotEnrich(boot, topcut = 2, botcut = 2)
+PlotEnrich(boot)
 }
 \arguments{
-\item{boot}{results from the testEnrich function}
-
-\item{topcut}{upper cutoff (fold-change) for plotting region names}
-
-\item{botcut}{bottom cutoff (fold-change) for plotting region names}
+\item{boot}{Comp object returned from the testEnrich function}
 }
 \value{
 Spatial enrichment plot
 }
 \description{
-Plot the significance results returned from testEnrich
+A quick plot to assess the enrichments returned from testEnrich.
+Gene overlap calculated by random chance is plotted on the
+x-axis and the gene overlap from the query set on the y-axis. Each
+dot represents an individual microdissected tissue. Note that
+the signficance estimate is only dependent on the randomly generated
+overlaps if the p-values were calculated with the bootstrap procedure.
 }
 \examples{
 #brainImageR:::loadworkspace()
@@ -29,6 +30,6 @@ data(vth)
 #random.matrix <- composite@random.matrix
 ##Calculate the significance estimates
 #boot <- testEnrich(composite)
-#PlotEnrich(boot, topcut = 6, botcut = 0.1)
+#PlotEnrich(boot)
 
 }

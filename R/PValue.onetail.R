@@ -1,11 +1,17 @@
 #' Calculate p-value from bootstrapped sample
 #'
-#'  \code{PValue.onetail} Calculates the p-value from a bootstrapped sample
+#' @description The distribution of microdissected tissues supporting each
+#' larger brain region is not equal across all regions. We therefore provide
+#' an option to bootstrap gene set enrichment. This function calculates
+#' the signficance of that enrichment.
 #'
-#' @param regions regions to search
-#' @param tissueExp1 presence of genes in query
-#' @param random.matrix presence of genes at random
+#' \code{PValue.onetail} Calculates the p-value from a bootstrapped sample
+#'
+#' @param regions character regions to search
+#' @param tissueExp1 numeric vector presence of genes in query
+#' @param random.matrix numeric presence of genes at random
 #' @return p-value of the significance of tissueExp1 given the random.matrix
+#' @importFrom stats na.exclude
 #'
 #' @examples
 #' ##Internal to brainImageR, called within testEnrich

@@ -1,11 +1,15 @@
 #' PlotEnrich
 #'
-#'  Plot the significance results returned from testEnrich
+#' A quick plot to assess the enrichments returned from testEnrich.
+#' Gene overlap calculated by random chance is plotted on the
+#' x-axis and the gene overlap from the query set on the y-axis. Each
+#' dot represents an individual microdissected tissue. Note that
+#' the signficance estimate is only dependent on the randomly generated
+#' overlaps if the p-values were calculated with the bootstrap procedure.
 #'
-#' @param boot results from the testEnrich function
-#' @param topcut upper cutoff (fold-change) for plotting region names
-#' @param botcut bottom cutoff (fold-change) for plotting region names
+#' @param boot Comp object returned from the testEnrich function
 #' @return Spatial enrichment plot
+#'
 #' @examples
 #' #brainImageR:::loadworkspace()
 #' ##First put together a gene list, or load in the default vth dataset
@@ -16,11 +20,14 @@
 #' #random.matrix <- composite@random.matrix
 #' ##Calculate the significance estimates
 #' #boot <- testEnrich(composite)
-#' #PlotEnrich(boot, topcut = 6, botcut = 0.1)
+#' #PlotEnrich(boot)
+#'
+#'@importFrom ggplot2 ggplot aes_string geom_point scale_colour_manual
+#' theme_bw xlab ylab
 #'
 #'@export
 
-PlotEnrich <- function(boot, topcut = 2, botcut = 2){
+PlotEnrich <- function(boot){
     significant <- boot$padj < 0.05
     ggplot2::ggplot(boot, ggplot2::aes_string("count.random", "count.sample"))+
     ggplot2::geom_point(alpha = 0.5)+

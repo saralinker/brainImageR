@@ -4,12 +4,12 @@
 \alias{testEnrich}
 \title{Calculate significance of gene set enrichment}
 \usage{
-testEnrich(composite, method = "fisher")
+testEnrich(composite, method = c("fisher", "bootstrap"))
 }
 \arguments{
-\item{composite}{Object returned from SpatialEnrichment.}
+\item{composite}{Comp object returned from SpatialEnrichment.}
 
-\item{method}{either "bootstrap" or "fisher"}
+\item{method}{character either "bootstrap" or "fisher"}
 }
 \value{
 spatiotemporal prediction

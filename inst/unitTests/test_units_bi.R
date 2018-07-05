@@ -1,0 +1,5 @@
+data(vth)
+data(hipp)
+expect_that(vth, is_a("character"))
+expect_that(hipp, is_a("character"))
+expect_that(brainrange(0,10), is_a("numeric"))

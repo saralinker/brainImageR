@@ -2,11 +2,11 @@
 #'
 #'  \code{CreateBrain} convert spatial enrichment into anatomical coordinates.
 #'
-#' @param composite "Comp" object returned from SpatialEnrichment
-#' @param boot significance estimates returned from testEnrich
-#' @param slice brain section
-#' @param pcut padj filter.
-#' @return "Comp" object
+#' @param composite Comp object returned from SpatialEnrichment
+#' @param boot result from testEnrich including significance estimates
+#' @param slice integer brain section
+#' @param pcut numeric padj filter.
+#' @return Comp object
 #'
 #' @examples
 #' #brainImageR:::loadworkspace()

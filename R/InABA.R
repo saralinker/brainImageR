@@ -19,9 +19,9 @@
 
 
 
-InABA <- function(genes, refset = "developing"){
+InABA <- function(genes, refset = c("developing","adult")){
     rowmeta <- .cache[["EH1449"]]
-    refset <- tolower(refset)
+    refset <- tolower(match.arg(refset))
     all_genes <- as.character(rowmeta$gene_symbol)
     genes2 <- genes[(!is.na(rowmeta[match(genes,all_genes),"probeset_id"]))]
     return(genes2)

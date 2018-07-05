@@ -17,7 +17,7 @@ brainrange(first = 0, last = 1, by = 1)
 vector of numbers
 }
 \description{
-replaces seq to pass bioccheck
+creates a sequence of numbers from first to last by the given interval
 }
 \examples{
 brainrange(1,10,0.5)

@@ -26,7 +26,7 @@ available_areanames <- function(composite, slice = NULL){
         conversion <- .cache[["EH1442"]]
         slices <- .cache[["EH1444"]]
     }else{
-        stop(paste(c("Please choose a refset = developing or adult.")))
+        stop("Please choose a refset = developing or adult.")
     }
     panel <- conversion[,paste("panel",slices[slice],sep="")]
     nm <- unique(as.character(panel[!is.na(panel)]))

@@ -1,5 +1,11 @@
 #' @title loadworkspace
-#' @description loads data into .cache
+#' @description loads data into .cache. BrainImageR uses reference maps
+#' of the human brain, as well as reference gene expression data, and
+#' gene sets to compare the user's data to the Allen Brain Atlas.
+#' These datasets are quite large and are therefore stored within an
+#' ExpressionHub data package. loadworkspace makes this data available to
+#' the brainImageR functions.
+#'
 #'
 #' @examples
 #' #brainImageR:::loadworkspace()

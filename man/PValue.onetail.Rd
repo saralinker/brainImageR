@@ -7,16 +7,21 @@
 PValue.onetail(regions, tissueExp1, random.matrix)
 }
 \arguments{
-\item{regions}{regions to search}
+\item{regions}{character regions to search}
 
-\item{tissueExp1}{presence of genes in query}
+\item{tissueExp1}{numeric vector presence of genes in query}
 
-\item{random.matrix}{presence of genes at random}
+\item{random.matrix}{numeric presence of genes at random}
 }
 \value{
 p-value of the significance of tissueExp1 given the random.matrix
 }
 \description{
+The distribution of microdissected tissues supporting each
+larger brain region is not equal across all regions. We therefore provide
+an option to bootstrap gene set enrichment. This function calculates
+the signficance of that enrichment.
+
 \code{PValue.onetail} Calculates the p-value from a bootstrapped sample
 }
 \examples{

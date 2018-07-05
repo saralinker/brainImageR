@@ -28,8 +28,7 @@ predict_time <- function(dat = NULL, genelist = NULL, minage = 8,
     alldev_scale <- .cache[["EH1451"]]
     #1) Check data
     if(is.null(dat)){
-        warning("data is NULL.")
-        stop()
+        stop("data is NULL.")
     }
 
     ##################################

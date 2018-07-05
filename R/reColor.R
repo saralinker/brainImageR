@@ -36,8 +36,9 @@
 #' @export
 
 
-reColor <- function(i,slice,tissueExp,dim,Abrev,Files,refset = "developing"){
-    refset <- tolower(refset)
+reColor <- function(i,slice,tissueExp,dim,Abrev,Files,
+                    refset = c("developing","adult")){
+    refset <- tolower(match.arg(refset))
     if (refset == "developing"){
         conversion <- dev_conversion
         slices <- .cache[["EH1443"]]
@@ -45,7 +46,7 @@ reColor <- function(i,slice,tissueExp,dim,Abrev,Files,refset = "developing"){
         conversion <- .cache[["EH1442"]]
         slices <- .cache[["EH1444"]]
     }else{
-        stop(paste(c("Please choose refset = developing or adult.")))
+        stop("Please choose refset = developing or adult.")
     }
 
 

@@ -4,7 +4,7 @@
 \alias{TissueSummary}
 \title{Internal-Identify the number of genes expressed in each tissue}
 \usage{
-TissueSummary(genes, refset = "developing")
+TissueSummary(genes, refset = c("developing", "adult"))
 }
 \arguments{
 \item{genes}{Genes to query for tissue location}

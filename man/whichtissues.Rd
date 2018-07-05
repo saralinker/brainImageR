@@ -4,7 +4,7 @@
 \alias{whichtissues}
 \title{Identify the tissues where a set of genes are expressed}
 \usage{
-whichtissues(g, refset = "developing")
+whichtissues(g, refset = c("developing", "adult"))
 }
 \arguments{
 \item{g}{gene list}

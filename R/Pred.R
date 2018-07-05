@@ -1,6 +1,10 @@
-#' @title Set class Pred
-#' @description
-#' Set class Pred
+#' @title Pred
+#' @description keeps track of parameters and results from predict_time
+#' @slot pred_age data.frame of results from predict_time
+#' @slot model randomForest model
+#' @slot minage minimum age filter from predict_time
+#' @slot maxage maximum age filter from predict_time
+#' @slot tissue tissue filter from predict_time
 #' @importFrom methods new
 #' @export Pred
 #' @exportClass Pred

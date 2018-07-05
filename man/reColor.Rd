@@ -4,7 +4,8 @@
 \alias{reColor}
 \title{Color in the brain images based on enrichment values}
 \usage{
-reColor(i, slice, tissueExp, dim, Abrev, Files, refset = "developing")
+reColor(i, slice, tissueExp, dim, Abrev, Files, refset = c("developing",
+    "adult"))
 }
 \arguments{
 \item{i}{tissue region from within the specified rostral-caudal section}

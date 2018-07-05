@@ -4,7 +4,7 @@
 \alias{InABA}
 \title{Quick search for presence of genes in the ABA list}
 \usage{
-InABA(genes, refset = "developing")
+InABA(genes, refset = c("developing", "adult"))
 }
 \arguments{
 \item{genes}{genes to search}

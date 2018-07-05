@@ -19,8 +19,8 @@
 #' @export
 
 
-TissueSummary <- function(genes, refset = "developing"){
-    refset <- tolower(refset)
+TissueSummary <- function(genes, refset = c("developing", "adult")){
+    refset <- tolower(match.arg(refset))
     if (refset == "developing"){
         abatissuesBygenes <- .cache[["EH1445"]]
         colmeta <- .cache[["EH1447"]]
@@ -28,7 +28,7 @@ TissueSummary <- function(genes, refset = "developing"){
         abatissuesBygenes <- .cache[["EH1446"]]
         colmeta <- .cache[["EH1448"]]
     }else{
-        stop(paste(c("Please choose refset = developing or adult.")))
+        stop("Please choose refset = developing or adult.")
     }
 
     if(!is.null(ncol(stats::na.exclude(abatissuesBygenes[genes,])))){

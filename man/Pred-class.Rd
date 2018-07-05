@@ -4,10 +4,24 @@
 \name{Pred-class}
 \alias{Pred-class}
 \alias{Pred}
-\title{Set class Pred}
+\title{Pred}
 \description{
-Set class Pred
+keeps track of parameters and results from predict_time
 }
+\section{Slots}{
+
+\describe{
+\item{\code{pred_age}}{data.frame of results from predict_time}
+
+\item{\code{model}}{randomForest model}
+
+\item{\code{minage}}{minimum age filter from predict_time}
+
+\item{\code{maxage}}{maximum age filter from predict_time}
+
+\item{\code{tissue}}{tissue filter from predict_time}
+}}
+
 \examples{
 prep <- methods::new(Class="Pred",
 pred_age = data.frame(matrix(0,nrow=10,ncol=10)),

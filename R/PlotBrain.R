@@ -1,11 +1,16 @@
 #' @title Color and Plot the SGSE image
 #' @description
-#'  \code{PlotBrain} Plots CreateBrain.
+#' \code{PlotBrain} Plots CreateBrain. The gene set enrichment observe
+#' within the microdissected tissues (results of testEnrich) are
+#' combined here to show gene set enrichment across broad brain regions.
+#' Enriched regions are colored in red, and regions depleted for the query
+#' gene list are colored in blue.
+#'
 #' @details
 #' PlotBrain plots your spatial gene set enrichment image.
 #'
-#' @param composite Object returned from CreateBrain.
-#' @param legend whether the legend should be included. Default = TRUE
+#' @param composite Comp object returned from CreateBrain.
+#' @param legend Boolean whether the legend should be included. Default = TRUE
 #' @return plots the SGSE brain image
 #'
 #' @examples

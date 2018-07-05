@@ -1,7 +1,7 @@
 #' @title brainrange
 #'
 #' @description
-#' replaces seq to pass bioccheck
+#' creates a sequence of numbers from first to last by the given interval
 #'
 #'
 #' @param first starting value number

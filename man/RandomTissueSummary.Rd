@@ -4,7 +4,7 @@
 \alias{RandomTissueSummary}
 \title{Generate a random overlap}
 \usage{
-RandomTissueSummary(i, genes, samplesize, refset = "developing")
+RandomTissueSummary(i, genes, samplesize, refset = c("developing", "adult"))
 }
 \arguments{
 \item{i}{current iteration}

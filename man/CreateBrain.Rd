@@ -7,16 +7,16 @@
 CreateBrain(composite, boot, slice, pcut = 0.05)
 }
 \arguments{
-\item{composite}{"Comp" object returned from SpatialEnrichment}
+\item{composite}{Comp object returned from SpatialEnrichment}
 
-\item{boot}{significance estimates returned from testEnrich}
+\item{boot}{result from testEnrich including significance estimates}
 
-\item{slice}{brain section}
+\item{slice}{integer brain section}
 
-\item{pcut}{padj filter.}
+\item{pcut}{numeric padj filter.}
 }
 \value{
-"Comp" object
+Comp object
 }
 \description{
 \code{CreateBrain} convert spatial enrichment into anatomical coordinates.

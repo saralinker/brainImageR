@@ -20,7 +20,8 @@
 SpatialEnrichment <- function(genes,
                                 background = NULL,
                                 reps = 10,
-                                refset = "developing"){
+                                refset = c("developing", "adult")){
+    refset <- match.arg(refset)
     rowmeta <- .cache[["EH1449"]]
     if(is.null(rowmeta)){
         warning(paste(c("workspace not loaded: ",
@@ -41,7 +42,7 @@ SpatialEnrichment <- function(genes,
     genes <- unique(as.character(rowmeta[probe_match,"gene_symbol"]))
 
     message(paste(surviving,"of",starting,"genes are present in ref dataset"))
-    tissueExp1 <- tissueExp <- TissueSummary(genes, refset)
+    tissueExp1 <- TissueSummary(genes, refset)
     message(paste(surviving,"genes are expressed using",reps , "iterations"))
     if(!is.null(background)){
         message("Using user-provided set of background genes")
@@ -73,18 +74,31 @@ SpatialEnrichment <- function(genes,
                                             samplesize = surviving,
                                             refset = refset))
 
-    tissueExp <- as.table(apply(X=random.matrix,MARGIN=1,FUN=mean))
-    tissueExp2 <-  tissueExp
-    tissueExp1b <- vector()
-    for(i in unique(names(tissueExp1))){
-        tissueExp1b[i] <- mean(tissueExp1[names(tissueExp1) == i])
-    }
-    tissueExp1 <- tissueExp1b
-    tissueExp2b <- vector()
-    for(i in unique(names(tissueExp1))){
-        tissueExp2b[i] <- mean(tissueExp2[names(tissueExp1) == i])
-    }
-    tissueExp2 <- tissueExp2b
+    tissueExp2 <- apply(X=random.matrix,MARGIN=1,FUN=mean)
+    # tissueExp1b <- vector()
+    # for(i in unique(names(tissueExp1))){
+    #     tissueExp1b[i] <- mean(tissueExp1[names(tissueExp1) == i])
+    # }
+    # tissueExp1 <- tissueExp1b
+
+
+    tissueExp1b <- vapply(unique(names(tissueExp1)), function(i) {
+        mean(tissueExp1[names(tissueExp1) == i])
+    }, numeric(1))
+
+
+
+    # tissueExp2b <- vector()
+    # for(i in unique(names(tissueExp1))){
+    #     tissueExp2b[i] <- mean(tissueExp2[names(tissueExp1) == i])
+    # }
+    # tissueExp2 <- tissueExp2b
+
+
+    tissueExp2b <- vapply(unique(names(tissueExp2)), function(i) {
+        mean(tissueExp2[names(tissueExp2) == i])
+    }, numeric(1))
+
 
     rm2 <- matrix(data = NA,
                     nrow = length(unique(names(tissueExp1))),

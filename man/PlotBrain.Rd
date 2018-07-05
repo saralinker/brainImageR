@@ -7,15 +7,19 @@
 PlotBrain(composite, legend = TRUE)
 }
 \arguments{
-\item{composite}{Object returned from CreateBrain.}
+\item{composite}{Comp object returned from CreateBrain.}
 
-\item{legend}{whether the legend should be included. Default = TRUE}
+\item{legend}{Boolean whether the legend should be included. Default = TRUE}
 }
 \value{
 plots the SGSE brain image
 }
 \description{
-\code{PlotBrain} Plots CreateBrain.
+\code{PlotBrain} Plots CreateBrain. The gene set enrichment observe
+within the microdissected tissues (results of testEnrich) are
+combined here to show gene set enrichment across broad brain regions.
+Enriched regions are colored in red, and regions depleted for the query
+gene list are colored in blue.
 }
 \details{
 PlotBrain plots your spatial gene set enrichment image.

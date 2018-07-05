@@ -4,20 +4,21 @@
 \alias{BrainMap}
 \title{Internal- Overlaps regional enrichment into a single section}
 \usage{
-BrainMap(dim, tissueExp, Abrev, Files, slice, refset = "developing")
+BrainMap(dim, tissueExp, Abrev, Files, slice, refset = c("developing",
+    "adult"))
 }
 \arguments{
-\item{dim}{dimensions of the original image}
+\item{dim}{numeric dimensions of the original image}
 
 \item{tissueExp}{counts of genes per tissue, from SpatialEnrichment.}
 
-\item{Abrev}{all regions in the given section}
+\item{Abrev}{character of all regions in the given section}
 
-\item{Files}{tiff images for each region}
+\item{Files}{character of tiff images for each region}
 
-\item{slice}{current slice}
+\item{slice}{integer of current slice}
 
-\item{refset}{reference brain map}
+\item{refset}{character of reference brain map}
 }
 \value{
 returns a matrix weighted by the gene overlap

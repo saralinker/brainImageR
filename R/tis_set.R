@@ -32,7 +32,7 @@ if (refset == "developing"){
     slices <- .cache[["EH1444"]]
     colmeta <- .cache[["EH1448"]]
 }else{
-    stop(paste(c("Please choose refset = developing or adult.")))
+    stop("Please choose refset = developing or adult.")
 }
 
 panel <- conversion[,c("acronym",paste("panel",slices[slice],sep=""))]

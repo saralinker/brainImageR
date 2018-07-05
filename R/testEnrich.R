@@ -4,8 +4,8 @@
 #' \code{testEnrich} test the enrichment of the observed enrichment
 #'
 #'
-#' @param composite Object returned from SpatialEnrichment.
-#' @param method either "bootstrap" or "fisher"
+#' @param composite Comp object returned from SpatialEnrichment.
+#' @param method character either "bootstrap" or "fisher"
 #' @return spatiotemporal prediction
 #'
 #' @examples
@@ -21,7 +21,8 @@
 #'
 #' @export
 
-testEnrich <- function(composite, method = "fisher"){
+testEnrich <- function(composite, method = c("fisher", "bootstrap")){
+    method = match.arg(method)
     dev_colmeta <- .cache[["EH1447"]]
     ad_colmeta <- .cache[["EH1448"]]
     genes <- composite@genes

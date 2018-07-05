@@ -1,6 +1,13 @@
-#' @title Set class Comp
+#' @title Comp keeps track of Spatial Enrichment calculations and parameters
 #' @description
-#' Set class Comp
+#' Comp tracks the parameters and calculations throughout spatial
+#' gene set enrichment.
+#' @slot genes character vector of query genes
+#' @slot tissueExp1 named numeric vector of query gene count in tissues
+#' @slot tissueExp2 named numeric vector of avg.
+#'  background gene count in tissues
+#' @slot composite composite image matrix
+#'
 #' @importFrom methods new
 #' @export Comp
 #' @exportClass Comp

@@ -3,12 +3,12 @@
 #' @description
 #'  \code{BrainMap} Merges maps from reColor
 #'
-#' @param dim dimensions of the original image
+#' @param dim numeric dimensions of the original image
 #' @param tissueExp counts of genes per tissue, from SpatialEnrichment.
-#' @param Abrev all regions in the given section
-#' @param Files tiff images for each region
-#' @param slice current slice
-#' @param refset reference brain map
+#' @param Abrev character of all regions in the given section
+#' @param Files character of tiff images for each region
+#' @param slice integer of current slice
+#' @param refset character of reference brain map
 #' @return returns a matrix weighted by the gene overlap
 #'
 #' @examples
@@ -39,7 +39,9 @@
 #'
 #'@export
 
-BrainMap <- function(dim,tissueExp,Abrev,Files, slice, refset = "developing"){
+BrainMap <- function(dim,tissueExp,Abrev,Files, slice,
+                        refset = c("developing", "adult")){
+    refset <- match.arg(refset)
     tmp <- do.call("cbind",
                     lapply(X=Abrev,
                             FUN=reColor,
