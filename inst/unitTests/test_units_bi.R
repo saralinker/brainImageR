@@ -1,5 +1,5 @@
 data(vth)
 data(hipp)
-testthat::expect_that(vth, is_a("character"))
-testthat::expect_that(hipp, is_a("character"))
-testthat::expect_that(brainrange(0,10), is_a("numeric"))
+testthat::expect_that(vth, testthat::is_a("character"))
+testthat::expect_that(hipp, testthat::is_a("character"))
+testthat::expect_that(brainrange(0,10), testthat::is_a("numeric"))
