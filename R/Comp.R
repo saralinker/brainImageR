@@ -5,6 +5,9 @@
 #' @slot genes character vector of query genes
 #' @slot tissueExp1 named numeric vector of query gene count in tissues
 #' @slot tissueExp2 named numeric vector of avg.
+#' @slot random.matrix matrix of overlap at random, size = boot replicates
+#' @slot refset character noting developing or adult reference
+#'
 #'  background gene count in tissues
 #' @slot composite composite image matrix
 #'

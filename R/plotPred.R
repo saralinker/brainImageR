@@ -13,6 +13,9 @@
 #' #time <- predict_time(dat)
 #' ##plot the predictions
 #' #PlotPred(time)
+#' @importFrom ggplot2 aes_string geom_point ggplot scale_colour_manual
+#' @importFrom ggplot2 xlab ylab theme_bw geom_smooth geom_hline labs
+#' @importFrom ggplot2 geom_bar theme element_text
 #' @export
 
 PlotPred <- function(time){
@@ -35,30 +38,30 @@ PlotPred <- function(time){
     df <- rbind(t1,t2)
     YINT1 <- min(df[df$group == "sample", "pred_age"])
     YINT2 <- max(df[df$group == "sample", "pred_age"])
-    p1 <- ggplot2::ggplot(df[df$group == "aba",],
-                            ggplot2::aes_string(x =  "actual_age",
+    p1 <- ggplot(df[df$group == "aba",],
+                            aes_string(x =  "actual_age",
                                                 y = "pred_age",
                                                 colour = "group"))+
-        ggplot2::geom_point(size = 1, alpha = 1)+
-        ggplot2::scale_colour_manual(values =c("blue","grey","red"))+
-        ggplot2::xlab("Actual age, pcw")+
-        ggplot2::ylab("predicted age, pcw")+
-        ggplot2::theme_bw(base_size = 10)+
-        ggplot2::geom_smooth(method = "lm", colour = "grey")+
-        ggplot2::geom_hline(yintercept = YINT1,
+        geom_point(size = 1, alpha = 1)+
+        scale_colour_manual(values =c("blue","grey","red"))+
+        xlab("Actual age, pcw")+
+        ylab("predicted age, pcw")+
+        theme_bw(base_size = 10)+
+        geom_smooth(method = "lm", colour = "grey")+
+        geom_hline(yintercept = YINT1,
                             colour = "grey")+
-        ggplot2::geom_hline(yintercept = YINT2,
+        geom_hline(yintercept = YINT2,
                             colour = "grey")+
-        ggplot2::labs(title = "Reference Data")
+        labs(title = "Reference Data")
 
     df$sample <- rownames(df)
-    p2 <- ggplot2::ggplot(df[df$group != "aba",],
-                            ggplot2::aes_string(x = "sample","pred_age" ))+
-                            ggplot2::geom_bar(stat = "identity")+
-                            ggplot2::labs(title = "Query Data")+
-                            ggplot2::ylab("predicted age, pcw")+
-                            ggplot2::theme_bw(base_size = 10)+
-                            ggplot2::theme(axis.text.x = ggplot2::element_text(
+    p2 <- ggplot(df[df$group != "aba",],
+                            aes_string(x = "sample","pred_age" ))+
+                            geom_bar(stat = "identity")+
+                            labs(title = "Query Data")+
+                            ylab("predicted age, pcw")+
+                            theme_bw(base_size = 10)+
+                            theme(axis.text.x = element_text(
                             angle = 90,
                             hjust = 1))
 

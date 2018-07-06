@@ -23,21 +23,21 @@
 #' #PlotEnrich(boot)
 #'
 #'@importFrom ggplot2 ggplot aes_string geom_point scale_colour_manual
-#' theme_bw xlab ylab
+#'@importFrom ggplot2 theme_bw xlab ylab
 #'
 #'@export
 
 PlotEnrich <- function(boot){
     significant <- boot$padj < 0.05
-    ggplot2::ggplot(boot, ggplot2::aes_string("count.random", "count.sample"))+
-    ggplot2::geom_point(alpha = 0.5)+
-    ggplot2::geom_point(data = boot,
-                        ggplot2::aes_string("count.random",
+    ggplot(boot, aes_string("count.random", "count.sample"))+
+    geom_point(alpha = 0.5)+
+    geom_point(data = boot,
+                        aes_string("count.random",
                                             "count.sample",
                                             colour = "significant"
                                             ),alpha = 0.3)+
-    ggplot2::scale_colour_manual(values = c("grey","blue"))+
-    ggplot2::theme_bw(base_size = 12)+
+    scale_colour_manual(values = c("grey","blue"))+
+    theme_bw(base_size = 12)+
     # ggrepel::geom_text_repel(
     # data = subset(boot, abs(FC) > topcut),
     # ggplot2::aes_string(label = "abrev"),
@@ -52,6 +52,6 @@ PlotEnrich <- function(boot){
     # box.padding = 0.1,
     # point.padding = 0.3
     # )+
-    ggplot2::xlab("gene count, random")+
-    ggplot2::ylab("gene count, query")
+    xlab("gene count, random")+
+    ylab("gene count, query")
 }

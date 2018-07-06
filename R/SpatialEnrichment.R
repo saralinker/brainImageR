@@ -14,6 +14,7 @@
 #' data(vth)
 #' ##Then calculate the spatial enrichment
 #' #composite <- SpatialEnrichment(vth,20,"developing")
+#' @importFrom methods new
 #'@export
 
 
@@ -110,7 +111,7 @@ SpatialEnrichment <- function(genes,
         rm2[i,] <- apply(random.matrix[names(tissueExp1) == i,], 2, mean)
     }
     random.matrix <- data.frame(rm2)
-    comp <- methods::new(Class="Comp",
+    comp <- new(Class="Comp",
                             genes = genes,
                             tissueExp1 = tissueExp1,
                             tissueExp2 =  tissueExp2,

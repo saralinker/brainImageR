@@ -22,7 +22,8 @@
 #' #composite <- CreateBrain(composite, boot, slice = 6, pcut = 0.05)
 #' ##Plot the brain
 #' #PlotBrain(composite, Breaks = 12)
-#'
+#'@importFrom stats sd
+#'@importFrom methods new
 #'@export
 
 CreateBrain <- function(composite, boot, slice, pcut = 0.05){
@@ -68,11 +69,11 @@ CreateBrain <- function(composite, boot, slice, pcut = 0.05){
     normalized.1 <- (composite1)
     normalized <- normalized.1
     normalized[composite1 == 0.0001] <- 0.0001
-    n_SD <- stats::sd(normalized.1[!is.na(normalized.1)])
+    n_SD <- sd(normalized.1[!is.na(normalized.1)])
     n_max <- max(normalized.1[!is.na(normalized.1)])
     Outlinefill <- n_max + n_SD
     normalized[outline[[slice]] < 1] <- Outlinefill
-    comp <- methods::new(Class="Comp",
+    comp <- new(Class="Comp",
                         genes = composite@genes,
                         tissueExp1 = tissueExp1,
                         tissueExp2 =  tissueExp2,

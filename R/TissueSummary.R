@@ -15,7 +15,7 @@
 #' #brainImageR:::loadworkspace()
 #' data(vth)
 #' #tissueExp <- TissueSummary(vth, refset = "developing")
-#'
+#' @importFrom stats na.exclude
 #' @export
 
 
@@ -31,11 +31,11 @@ TissueSummary <- function(genes, refset = c("developing", "adult")){
         stop("Please choose refset = developing or adult.")
     }
 
-    if(!is.null(ncol(stats::na.exclude(abatissuesBygenes[genes,])))){
-        a1 <- stats::na.exclude(abatissuesBygenes[genes,])
+    if(!is.null(ncol(na.exclude(abatissuesBygenes[genes,])))){
+        a1 <- na.exclude(abatissuesBygenes[genes,])
         tissueswithgenes <- colSums(a1)
     }else{
-        tissueswithgenes <- stats::na.exclude(abatissuesBygenes[genes,])
+        tissueswithgenes <- na.exclude(abatissuesBygenes[genes,])
     }
     a <- table(c(as.character(colmeta$structure_acronym),
                     as.character(colmeta$structure_acronym),

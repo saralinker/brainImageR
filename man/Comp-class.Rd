@@ -16,7 +16,12 @@ gene set enrichment.
 
 \item{\code{tissueExp1}}{named numeric vector of query gene count in tissues}
 
-\item{\code{tissueExp2}}{named numeric vector of avg.
+\item{\code{tissueExp2}}{named numeric vector of avg.}
+
+\item{\code{random.matrix}}{matrix of overlap at random, size = boot replicates}
+
+\item{\code{refset}}{character noting developing or adult reference
+
 background gene count in tissues}
 
 \item{\code{composite}}{composite image matrix}

@@ -35,5 +35,4 @@ data(vth)
 #composite <- CreateBrain(composite, boot, slice = 6, pcut = 0.05)
 ##Plot the brain
 #PlotBrain(composite, Breaks = 12)
-
 }

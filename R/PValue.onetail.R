@@ -29,14 +29,14 @@
 #'@export
 
 PValue.onetail <- function(regions,tissueExp1,random.matrix){
-    a <- stats::na.exclude(random.matrix[regions,])
+    a <- na.exclude(random.matrix[regions,])
     b <- tissueExp1[regions]
     if(length(regions) ==1){
         return(sum(a > b) / length(a))
         }else{
             out <- vector()
             for(i in brainrange(1,nrow(a))){
-                calc <- (b[i] / mean(as.numeric(stats::na.exclude(a[i,]))))
+                calc <- (b[i] / mean(as.numeric(na.exclude(a[i,]))))
             if ( !is.na(calc) & calc > 1){
                 out <- c(out, sum(a[i,] > b[i]) / ncol(a))
             }else{

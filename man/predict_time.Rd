@@ -32,5 +32,4 @@ Predict human developmental time from expression dataset
 data(dat)
 ##predict time
 #time <- predict_time(dat)
-
 }

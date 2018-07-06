@@ -25,5 +25,4 @@ Quantifies the presence of gene list within each tissue
 #brainImageR:::loadworkspace()
 data(vth)
 #tissueExp <- TissueSummary(vth, refset = "developing")
-
 }

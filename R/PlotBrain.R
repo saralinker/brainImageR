@@ -26,6 +26,9 @@
 #' #composite <- CreateBrain(composite, boot, slice = 5, pcut = 0.05)
 #' ##Plot the brain
 #' #PlotBrain(composite)
+#' @importFrom grid grid.raster grid.rect gpar grid.text grid.newpage
+#' @importFrom RColorBrewer brewer.pal
+#' @importFrom grDevices as.raster
 #' @export
 
 PlotBrain <- function(composite, legend = TRUE){
@@ -34,8 +37,8 @@ PlotBrain <- function(composite, legend = TRUE){
     map <- as.matrix(map)
     map[!is.finite(map)] <- 0
 
-    redGradient <- RColorBrewer::brewer.pal(n=round(Breaks),name="Reds")
-    blueGradient <- rev(RColorBrewer::brewer.pal(n=round(Breaks),name="Blues"))
+    redGradient <- brewer.pal(n=round(Breaks),name="Reds")
+    blueGradient <- rev(brewer.pal(n=round(Breaks),name="Blues"))
 
     map[map > 2 & map < max(map)] <- 2
 
@@ -63,16 +66,16 @@ PlotBrain <- function(composite, legend = TRUE){
 
 
 
-    grid::grid.newpage()
+    grid.newpage()
 
     #add legend
     #plot(1,1)
     #grid.newpage()
     if(composite@refset == "developing"){
-        grid::grid.raster(grDevices::as.raster(normalized.color),
+        grid.raster(as.raster(normalized.color),
                         interpolate=TRUE)
     }else{
-        grid::grid.raster(grDevices::as.raster(normalized.color),
+        grid.raster(as.raster(normalized.color),
                             interpolate=TRUE,
                             width = 0.8)
     }
@@ -94,21 +97,21 @@ PlotBrain <- function(composite, legend = TRUE){
         shift <- 0.035
 
         for (i in all_colors){
-            grid::grid.rect(x = x,
+            grid.rect(x = x,
                             y = y1,
                             width = shift,
                             height = shift,
-                            gp=grid::gpar(col = "white", fill = i))
+                            gp=gpar(col = "white", fill = i))
             y1 <- y1 + shift
         }
 
         y1 <- y
 
         for(i in all_segments){
-            grid::grid.text(label = i,
+            grid.text(label = i,
                             x = x,
                             y = y1,
-                            gp = grid::gpar(fontsize = 9),
+                            gp = gpar(fontsize = 9),
                             hjust = -1.55)
             y1 <- y1 + shift
             }
@@ -119,20 +122,20 @@ PlotBrain <- function(composite, legend = TRUE){
             y1 <- y
             shift <- 0.03
             for (i in all_colors){
-                grid::grid.rect(x = x1,
+                grid.rect(x = x1,
                             y = y1,
                             width = shift,
                             height = shift,
-                            gp=grid::gpar(col = "white", fill = i))
+                            gp=gpar(col = "white", fill = i))
                 y1 <- y1 + shift
             }
 
             x1 <- x
             for(i in all_segments){
-                grid::grid.text(label = i,
+                grid.text(label = i,
                             x = x1,
                             y = y1,
-                            gp = grid::gpar(fontsize = 9),
+                            gp = gpar(fontsize = 9),
                             vjust = 1.7,
                             hjust = -0.5)
                 y1 <- y1 - shift

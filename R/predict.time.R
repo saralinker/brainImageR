@@ -17,12 +17,12 @@
 #' data(dat)
 #' ##predict time
 #' #time <- predict_time(dat)
-#'
+#' @importFrom stats cor var quantile na.exclude sd predict
 #' @export
 
 predict_time <- function(dat = NULL, genelist = NULL, minage = 8,
                             maxage = 2120, tissue = NULL, minrsq = 0.6){
-    aba_fun <- function(x){stats::cor(x = x, y = abapcw$pcw)}
+    aba_fun <- function(x){cor(x = x, y = abapcw$pcw)}
 
     alldev_colMeta <- .cache[["EH1450"]]
     alldev_scale <- .cache[["EH1451"]]
@@ -39,8 +39,8 @@ predict_time <- function(dat = NULL, genelist = NULL, minage = 8,
     if(!is.null(genelist)){#Provided by the user
         genelist  <- unique(genelist)
         }else {#no gene list given
-            v <- unlist(apply(dat, 1, stats::var))
-            v_min <- stats::quantile(v,probs = 0.33)
+            v <- unlist(apply(dat, 1, var))
+            v_min <- quantile(v,probs = 0.33)
             genelist <- rownames(dat[rowSums(dat) > 2 & v > v_min,])
         }
     ###########################
@@ -78,14 +78,14 @@ predict_time <- function(dat = NULL, genelist = NULL, minage = 8,
     nm <- names(nm[nm==2])
     aba <- aba[nm,]
     m <- apply(X = aba, MARGIN = 1,FUN = mean)
-    mq <- stats::quantile(stats::na.exclude(m))[2]
-    s <- apply(X = aba, MARGIN = 1,FUN = stats::sd)
-    sq <- stats::quantile(stats::na.exclude(s))[2]
+    mq <- quantile(na.exclude(m))[2]
+    s <- apply(X = aba, MARGIN = 1,FUN = sd)
+    sq <- quantile(na.exclude(s))[2]
     pickme <- m[m > mq & s > sq]
-    aba <- aba[names(stats::na.exclude(pickme)),]
+    aba <- aba[names(na.exclude(pickme)),]
 
     aba_pcw_cor <- apply(X = aba, MARGIN = 1, FUN = aba_fun)
-    loadgenes <- names(stats::na.exclude(aba_pcw_cor[abs(aba_pcw_cor) > 0.5 ]))
+    loadgenes <- names(na.exclude(aba_pcw_cor[abs(aba_pcw_cor) > 0.5 ]))
 
     if(length(loadgenes) < 1){
         warning("No association with dev time. Try a new gene list.")
@@ -106,7 +106,7 @@ predict_time <- function(dat = NULL, genelist = NULL, minage = 8,
     rf <- randomForest::randomForest(log(pcw) ~ ., tmp, ntree= 500)
     gini <- as.data.frame(rf$importance)
     colnames(gini) <- c("MeanDecreaseGini")
-    cutoff <- stats::quantile((gini$MeanDecreaseGini),probs=qp)
+    cutoff <- quantile((gini$MeanDecreaseGini),probs=qp)
     tmpgenes <- rownames(gini)[gini$MeanDecreaseGini >= cutoff]
     #Round 2
     qp <- 0.5 #was 0.5
@@ -115,9 +115,9 @@ predict_time <- function(dat = NULL, genelist = NULL, minage = 8,
     rf <- randomForest::randomForest(log(pcw) ~ ., tmp, ntree= 150)
     gini2 <- as.data.frame(rf$importance)
     colnames(gini2) <- c("MeanDecreaseGini")
-    cutoff <- stats::quantile((gini2$MeanDecreaseGini),probs=qp)
+    cutoff <- quantile((gini2$MeanDecreaseGini),probs=qp)
     setgenes <- rownames(gini2)[gini2$MeanDecreaseGini >= cutoff]
-    if(length(setgenes) < 2 | mean(stats::na.exclude(rf$rsq)) < minrsq){
+    if(length(setgenes) < 2 | mean(na.exclude(rf$rsq)) < minrsq){
         warning("No association with dev time. Try a new gene list.")
         stop()
     }
@@ -148,7 +148,7 @@ predict_time <- function(dat = NULL, genelist = NULL, minage = 8,
     #   Or if the user recalculated the setgenes above
     #   ...calculate a new Model
     #if(length(genes) != length(setgenes)){
-    tmp_genes <- stats::na.exclude(aba[stats::na.exclude(genes),])
+    tmp_genes <- na.exclude(aba[na.exclude(genes),])
     tmp <- as.data.frame(t(rbind(tmp_genes,abapcw$pcw)))
     colnames(tmp) <- c(rownames(tmp_genes),"pcw")
     Model <- randomForest::randomForest(log(pcw) ~., tmp )
@@ -161,7 +161,7 @@ predict_time <- function(dat = NULL, genelist = NULL, minage = 8,
     dimnames(dat.scale) <- dimnames(dat)
     dat.scale <- as.data.frame(dat.scale)
     NewData <- as.data.frame(t(dat.scale))
-    pred_age <- exp(stats::predict(object=Model,newdata=NewData))
+    pred_age <- exp(predict(object=Model,newdata=NewData))
     pred <- methods::new(Class="Pred", pred_age = data.frame(pred_age),
                             model = list(Model),
                             minage = as.numeric(minage),
