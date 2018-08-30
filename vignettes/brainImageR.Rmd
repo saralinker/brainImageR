@@ -38,6 +38,20 @@ library(ggplot2)
 brainImageR:::loadworkspace()
 ```
 
+## Quick Run! These instructions are for those that just want to dive straight in. Otherwise, if you would like step-by-step instructions, see "Section 1" below.
+
+#Spatial
+data(vth)
+composite <- SpatialEnrichment(genes = vth, reps = 2, refset = "developing")
+res <- testEnrich(composite, method = "fisher")
+composite <- CreateBrain(composite, res, slice = 5, pcut =1)
+PlotBrain(composite)
+
+#Temporal
+data(dat)
+Time <- predict_time(dat, minage = 0 , maxage = 40)
+head(Time$pred_age)
+
 
 
 ## SECTION 1: Spatial Gene Set Enrichment Analysis
