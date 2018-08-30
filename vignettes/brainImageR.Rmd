@@ -86,12 +86,7 @@ head(hipp)
 `brainImageR` works from gene names in the Human Gene Symbol format.
 If your genes are not in this format they must first be converted.
 There are many utilities online for this purpose such as GeneIDConversion
-from DAVID Bioinformatics. Below we've included a section on how to do this
-with BiomaRt.
-
-```{r, message=FALSE, warning=FALSE}
-### FILL THIS IN
-```
+from DAVID Bioinformatics. https://david.ncifcrf.gov/conversion.jsp
 
 ## 1.1: Spatial Gene Set Enrichment
 
