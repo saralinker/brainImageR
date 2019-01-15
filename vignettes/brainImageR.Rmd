@@ -43,8 +43,8 @@ brainImageR:::loadworkspace()
 ```{r}
 #Spatial
 data(vth)
-composite <- SpatialEnrichment(genes = vth, reps = 2, refset = "developing")
-res <- testEnrich(composite, method = "fisher")
+composite <- SpatialEnrichment(genes = vth, reps = 2, refset = "adult")
+res <- testEnrich(composite,method = "fisher")# method = "fisher")
 composite <- CreateBrain(composite, res, slice = 5, pcut =1)
 PlotBrain(composite)
 

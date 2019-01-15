@@ -28,7 +28,11 @@ testEnrich <- function(composite, method = c("fisher", "bootstrap")){
     genes <- composite@genes
     tissueExp1 <- composite@tissueExp1
     random.matrix <- composite@random.matrix
-
+    if (composite@refset == "adult"){
+      tmp <- unlist(lapply(unique(names(tissueExp1)), function(x){mean(tissueExp1[[x]])}))
+      names(tmp) <- unique(names(tissueExp1))
+      tissueExp1 <- tmp
+    }
 
 
     if (method == "bootstrap"){

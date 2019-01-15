@@ -131,7 +131,7 @@ PlotBrain <- function(composite, legend = TRUE){
             }
 
             x1 <- x
-            for(i in all_segments){
+            for(i in rev(all_segments)){
                 grid.text(label = i,
                             x = x1,
                             y = y1,
