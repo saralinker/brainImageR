@@ -1,2 +1,4 @@
-CHANGES IN VERSION 0.0.0
+CHANGES IN VERSION 1.1.1
 -------------------------
+bug fix: fix legend in adult images
+bug fix: fix duplicated rownames in adult enrichment calculation
