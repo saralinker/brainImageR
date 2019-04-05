@@ -2,7 +2,7 @@ Package: brainImageR
 Type: Package
 Title: A Framework for visualizing gene set enrichment throughout
     neurodevelopment
-Version: 1.1.1
+Version: 1.1.2
 Authors@R: c(person("Slinker", role = c("aut","cre"), email = "sara.linker@gmail.com"))
 Author: Sara Linker [aut, cre]
 Maintainer: Sara B Linker <sara.linker@gmail.com>

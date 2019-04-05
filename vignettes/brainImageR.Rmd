@@ -42,16 +42,16 @@ brainImageR:::loadworkspace()
 
 ```{r}
 #Spatial
-data(vth)
-composite <- SpatialEnrichment(genes = vth, reps = 2, refset = "developing")
-res <- testEnrich(composite,method = "bootstrap")
-composite <- CreateBrain(composite, res, slice = 5, pcut =1)
-PlotBrain(composite)
+#data(vth)
+#composite <- SpatialEnrichment(genes = vth, reps = 2, refset = "developing")
+#res <- testEnrich(composite,method = "bootstrap")
+#composite <- CreateBrain(composite, res, slice = 5, pcut =1)
+#PlotBrain(composite)
 
 #Temporal
-data(dat)
-Time <- predict_time(dat, minage = 0 , maxage = 40)
-head(Time$pred_age)
+#data(dat)
+#Time <- predict_time(dat, minage = 0 , maxage = 40)
+#head(Time$pred_age)
 ```
 
 
