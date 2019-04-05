@@ -5,7 +5,7 @@
 \title{Color in the brain images based on enrichment values}
 \usage{
 reColor(i, slice, tissueExp, dim, Abrev, Files, refset = c("developing",
-    "adult"))
+  "adult"))
 }
 \arguments{
 \item{i}{tissue region from within the specified rostral-caudal section}

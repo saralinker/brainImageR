@@ -4,8 +4,8 @@
 \alias{predict_time}
 \title{Predict developmental time from gene expression data}
 \usage{
-predict_time(dat = NULL, genelist = NULL, minage = 8, maxage = 2120,
-    tissue = NULL, minrsq = 0.6)
+predict_time(dat = NULL, genelist = NULL, minage = 8,
+  maxage = 2120, tissue = NULL, minrsq = 0.6)
 }
 \arguments{
 \item{dat}{Normalized expression matrix}

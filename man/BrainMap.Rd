@@ -5,7 +5,7 @@
 \title{Internal- Overlaps regional enrichment into a single section}
 \usage{
 BrainMap(dim, tissueExp, Abrev, Files, slice, refset = c("developing",
-    "adult"))
+  "adult"))
 }
 \arguments{
 \item{dim}{numeric dimensions of the original image}

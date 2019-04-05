@@ -22,7 +22,7 @@ gene set enrichment.
 
 \item{\code{refset}}{character noting developing or adult reference
 
-background gene count in tissues}
+ background gene count in tissues}
 
 \item{\code{composite}}{composite image matrix}
 }}
