@@ -161,8 +161,8 @@ Output from `testEnrich`:
 - FC: fold-change between sample and random
 - p-value: raw p-value
 - p-adj: FDR corrected p-value
-- abrev: Abreviation of the tissue name provided by Allen Brain Atlas
-reference. This abreviation can be used as input to the Allen Brain Atlas
+- abrev: Abbreviation of the tissue name provided by Allen Brain Atlas
+reference. This abbreviation can be used as input to the Allen Brain Atlas
 reference map to identify where exactly the tissue is located within the
 **general brain area**. It can also be used as input into `GetGenes` to
 determine exactly which of your query gene list overlaps with the 
